@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 160 160">
+  <!-- Background -->
+  <rect x="0" y="0" width="160" height="160" rx="36" fill="#0d3348"/>
+
+  <!-- Body -->
+  <ellipse cx="80" cy="118" rx="50" ry="40" fill="#7ec8e3"/>
+  <!-- Head -->
+  <ellipse cx="80" cy="74" rx="40" ry="36" fill="#a8dff0"/>
+
+  <!-- Ears -->
+  <ellipse cx="38" cy="74" rx="9" ry="12" fill="#7ec8e3"/>
+  <ellipse cx="122" cy="74" rx="9" ry="12" fill="#7ec8e3"/>
+  <!-- Ear LED -->
+  <circle cx="38" cy="74" r="3" fill="#67e8f9"/>
+  <circle cx="122" cy="74" r="3" fill="#67e8f9"/>
+
+  <!-- Crystal on head -->
+  <polygon points="80,28 74,40 86,40" fill="#cff4ff"/>
+  <polygon points="80,32 70,44 80,40 90,44" fill="#e8faff" opacity="0.85"/>
+  <polygon points="80,28 74,40 86,40" fill="none" stroke="#5ab4d4" stroke-width="1"/>
+
+  <!-- Eyes -->
+  <circle cx="67" cy="72" r="5" fill="#0d3348"/>
+  <circle cx="93" cy="72" r="5" fill="#0d3348"/>
+  <!-- Eye shine -->
+  <circle cx="69" cy="70" r="1.5" fill="white"/>
+  <circle cx="95" cy="70" r="1.5" fill="white"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="53" cy="83" rx="9" ry="6" fill="#ffb3ba" opacity="0.75"/>
+  <ellipse cx="107" cy="83" rx="9" ry="6" fill="#ffb3ba" opacity="0.75"/>
+
+  <!-- Smile: simple curve -->
+  <path d="M70 88 Q80 96 90 88" fill="none" stroke="#1a4a6a" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Chest panel -->
+  <rect x="55" y="102" width="50" height="38" rx="6" fill="#1e3a4a"/>
+  <!-- Gold hex emblem -->
+  <polygon points="80,110 88,114 88,122 80,126 72,122 72,114" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <polygon points="80,114 85,117 85,123 80,126 75,123 75,117" fill="#f59e0b" opacity="0.45"/>
+
+  <!-- Red arms -->
+  <ellipse cx="28" cy="108" rx="7" ry="9" fill="#ef4444"/>
+  <ellipse cx="132" cy="108" rx="7" ry="9" fill="#ef4444"/>
+
+  <!-- Speech bubble -->
+  <rect x="95" y="16" width="56" height="30" rx="8" fill="white"/>
+  <rect x="95" y="16" width="56" height="30" rx="8" fill="none" stroke="#c0e8f8" stroke-width="1"/>
+  <polygon points="103,46 113,46 108,54" fill="white"/>
+  <!-- Bubble text lines -->
+  <line x1="103" y1="25" x2="143" y2="25" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="103" y1="32" x2="135" y2="32" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Sparkle -->
+  <circle cx="147" cy="29" r="3" fill="#fbbf24"/>
+  <line x1="147" y1="23" x2="147" y2="21" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="147" y1="35" x2="147" y2="37" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="141" y1="29" x2="139" y2="29" stroke="#fbbf24" stroke-width="1.5"/>
+  <line x1="153" y1="29" x2="155" y2="29" stroke="#fbbf24" stroke-width="1.5"/>
+</svg>
