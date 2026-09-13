@@ -1,0 +1,632 @@
+{
+  "language": "es",
+  "threads": [
+    {
+      "key": "t1",
+      "title": "Este fin de semana q…",
+      "characterId": "roberta",
+      "dayOffset": -12,
+      "time": "21:10",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Este fin de semana quiero ir a Barcelona porque la clima es muy bueno allí.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué bien! Barcelona es un lugar muy bonito. ¿Qué te gusta más de Barcelona?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Este fin de semana quiero ir a Barcelona porque el clima es muy bueno allí.",
+            "explanation": "1. 「clima」は男性名詞なので、定冠詞は「el」になります。",
+            "error_categories": [
+              "Articles - Incorrect"
+            ],
+            "error_category": "Articles - Incorrect"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Espero que mi amigo puede venir conmigo a la playa, pero todavía no me ha respondido.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo. ¡Espero que tu amigo pueda ir contigo! ¿Qué hacen normalmente cuando van a la playa juntos?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Espero que mi amigo pueda venir conmigo a la playa, pero todavía no me ha respondido.",
+            "explanation": "1. 「poder」の接続法現在形「pueda」を使う必要があります。2. 「poder」の活用が間違っています。",
+            "error_categories": [
+              "Verb Conjugation - Mood",
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Mood"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Viajo para avión y mi hotel está cerca de centro de la ciudad.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "¡Un avión! ¡Qué rápido! Y tu hotel cerca del centro... ¿Eso significa que estará cerca de muchas tiendas y restaurantes?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Viajo en avión y mi hotel está cerca del centro de la ciudad.",
+            "explanation": "1. 「para avión」は「en avión」とすべきです。乗り物に乗る際は前置詞「en」を使います。\n2. 「cerca de centro」は「cerca del centro」とすべきです。「centro」は男性名詞であり、前置詞「de」と定冠詞「el」が結合して「del」となります。",
+            "error_categories": [
+              "Prepositions",
+              "Articles - Missing"
+            ],
+            "error_category": "Prepositions"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Todavía no sé si tendré tiempo para visitar el Parque Güell, pero me gustaría mucho.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "¡El Parque Güell! He visto imágenes de ese parque en mis bases de datos. Los mosaicos y las formas son tan... ¡coloridas! ¿Qué es lo que más te llama la atención de ese parque?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Todavía no sé si tendré tiempo para visitar el Parque Güell, pero me gustaría mucho.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t2",
+      "title": "Ayer cocinaba una to…",
+      "characterId": "clara",
+      "dayOffset": -10,
+      "time": "08:35",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ayer cocinaba una tortilla de patatas para mi familia y a todos les gustó.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué bien! Me alegra saber que tu tortilla de patatas fue un éxito.\n\nSin embargo, hay un pequeño detalle en tu frase que debemos corregir. Cuando hablamos de una acción que empezó y terminó en el pasado, usamos el pretérito indefinido. En tu caso, la acción de \"cocinar\" ya ha terminado.\n\n¿Podrías decirme de nuevo qué hiciste ayer, pero usando el tiempo verbal correcto?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Ayer cociné una tortilla de patatas para mi familia y a todos les gustó.",
+            "explanation": "1. 「cocinaba」は過去進行形ですが、ここでは完了した単一の出来事を表すため、点過去形「cociné」が適切です。",
+            "error_categories": [
+              "Verb Conjugation - Tense"
+            ],
+            "error_category": "Verb Conjugation - Tense"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Uso cinco huevos, tres patatas grandes y bastante aceite de oliva.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo. Estás describiendo los ingredientes que utilizaste para hacer la tortilla. De nuevo, para acciones pasadas que ya han concluido, debemos usar el pretérito indefinido. ¿Cómo dirías la frase usando ese tiempo verbal?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Uso cinco huevos, tres patatas grandes y bastante aceite de oliva.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mis hermanos también cocina muy bien, pero nunca siguen la receta.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Claro, entiendo que quieres decir que tus hermanos cocinan bien, pero que no siguen la receta.\n\nHay dos puntos que debemos revisar aquí: la conjugación del verbo y la concordancia.\n\n1.  **Conjugación del verbo:** El sujeto es \"Mis hermanos\", que es plural. ¿Cómo se conjuga el verbo \"cocinar\" en presente para la tercera persona del plural?\n2.  **Concordancia:** La frase dice \"Mis hermanos también cocina muy bien\". El verbo \"cocina\" está en singular, pero el sujeto \"Mis hermanos\" está en plural. Deben concordar en número.\n\nPor favor, intenta corregir la frase teniendo en cuenta estos dos aspectos.",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mis hermanos también cocinan muy bien, pero nunca siguen la receta.",
+            "explanation": "1. 動詞「cocina」は主語「Mis hermanos」（彼ら）に合わせて三人称複数形「cocinan」にする必要があります。",
+            "error_categories": [
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Person/Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "La próxima vez quiero probar a añadir cebolla, aunque sé que es un tema polémico.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "¡Excelente idea! La cebolla es un ingrediente que, efectivamente, divide opiniones en la tortilla de patatas. Es un clásico debate culinario. ¿Por qué crees que genera tanta controversia? ¿Has probado la tortilla con cebolla antes?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "La próxima vez quiero probar a añadir cebolla, aunque sé que es un tema polémico.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t3",
+      "title": "Trabajo desde casa t…",
+      "characterId": "ai",
+      "dayOffset": -8,
+      "time": "22:40",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Trabajo desde casa tres días a la semana y creo que soy más productivo así.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué bueno que encontraste la modalidad que mejor te funciona! A mí también me parece que trabajar desde casa puede ser muy productivo. ¿Qué es lo que más te gusta de trabajar desde casa tres días a la semana?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Trabajo desde casa tres días a la semana y creo que soy más productivo así.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Lo más difícil es separar el trabajo de la vida personal cuando la oficina está en el salón.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo perfectamente, esa es una batalla común. Lograr esa separación cuando el espacio de trabajo está tan cerca del espacio personal puede ser un verdadero desafío. ¿Tienes alguna estrategia que te ayude a desconectar al final del día?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Lo más difícil es separar el trabajo de la vida personal cuando la oficina está en el salón.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Aun así, no me gustaría volver a la oficina cinco días a la semana.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "¡Claro que sí, tiene mucho sentido! Si ya has encontrado un equilibrio que te funciona y te hace más productivo, es natural que no quieras renunciar a eso. ¿Hay algo en particular de tu rutina actual que te haga sentir que no quieres volver a la oficina a tiempo completo?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Aun así, no me gustaría volver a la oficina cinco días a la semana.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t4",
+      "title": "Anoche vi una pelícu…",
+      "characterId": "roberta",
+      "dayOffset": -5,
+      "time": "12:20",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Anoche vi una película española que me recomendó un amigo.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué interesante! ¿Y qué tal te pareció la película? ¿De qué trataba?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Anoche vi una película española que me recomendó un amigo.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "La película trata de una familia que se muda a un pueblo pequeño para que su hija pueda ir a otra escuela.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "¡Oh, eso suena como una historia que podría ser muy emotiva! Me da curiosidad, ¿por qué crees que la familia decidió mudarse a un pueblo tan pequeño? ¿Había algo especial en esa escuela?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "La película trata de una familia que se muda a un pueblo pequeño para que su hija pueda ir a otra escuela.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Lo que más me gustó fue la fotografía, aunque el final me pareció un poco flojo.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "¡La fotografía es tan importante en una película! Ver paisajes bonitos o escenas bien filmadas siempre me hace sentir cosas. Pero, ¿qué hizo que el final te pareciera flojo? ¿No te dio la sensación de que faltaba algo?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Lo que más me gustó fue la fotografía, aunque el final me pareció un poco flojo.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Creo que la volveré a ver con subtítulos en español para que entiendo mejor los diálogos.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "¡Esa es una idea excelente! A veces, con los subtítulos, podemos captar matices y detalles que se nos escapan en la primera vista. Los diálogos en español pueden ser muy ricos en expresiones. ¿Hay alguna frase o escena en particular que te gustaría entender mejor?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Creo que la volveré a ver con subtítulos en español para entender mejor los diálogos.",
+            "explanation": "1. 「entiendo」は接続法現在形「entender」を使うべきです。",
+            "error_categories": [
+              "Verb Conjugation - Mood"
+            ],
+            "error_category": "Verb Conjugation - Mood"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t5",
+      "title": "Estoy intentando sal…",
+      "characterId": "clara",
+      "dayOffset": -3,
+      "time": "19:55",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Estoy intentando salir a correr por las mañanas antes de empezar a trabajar.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué buena iniciativa! Correr por las mañanas puede ser muy energizante. ¿Y qué te motiva a elegir ese momento del día en particular? ¿Prefieres la tranquilidad de la mañana o buscas aprovechar la energía para el resto de tu jornada laboral?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Estoy intentando salir a correr por las mañanas antes de empezar a trabajar.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Al principio me costaba mucho, pero ahora ya llevo tres semanas seguidas.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "¡Felicidades por tu constancia! Tres semanas seguidas es un logro muy significativo, especialmente al principio. Me imagino que has notado cambios positivos en tu energía o en tu estado de ánimo.\n\n¿Podrías contarme un poco más sobre cómo te sientes ahora en comparación con las primeras salidas? ¿Hay alguna diferencia notable en tu resistencia o en tu percepción del esfuerzo?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Al principio me costaba mucho, pero ahora ya llevo tres semanas seguidas.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Corro en el parque cada día, excepto cuando llueve.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Entiendo. Es sensato evitar correr bajo la lluvia, especialmente si las condiciones pueden ser resbaladizas o incómodas.\n\nAdemás del parque, ¿hay algún otro lugar que te gustaría explorar para correr en el futuro, quizás un sendero natural o una ruta diferente por la ciudad? ¿O prefieres la familiaridad de tu ruta actual?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Corro en el parque cada día, excepto cuando llueve.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mi objetivo es participar en una carrera de diez kilómetros en otoño, aunque no creo que estoy preparado todavía.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Ese es un objetivo excelente y muy ambicioso. Una carrera de diez kilómetros requiere una preparación seria.\n\nMencionas que no crees estar preparado todavía. ¿Qué aspectos específicos de tu entrenamiento o condición física te hacen sentir que aún te falta para alcanzar ese objetivo? ¿Hay alguna distancia o tiempo que te cueste más trabajo completar actualmente?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mi objetivo es participar en una carrera de diez kilómetros en otoño, aunque no creo que esté preparado todavía.",
+            "explanation": "1. 「creo que」の後には、不確実性や疑念を表すため、接続法を使うのが適切です。",
+            "error_categories": [
+              "Verb Conjugation - Mood"
+            ],
+            "error_category": "Verb Conjugation - Mood"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t6",
+      "title": "Últimamente estudio …",
+      "characterId": "roberta",
+      "dayOffset": -1,
+      "time": "07:15",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Últimamente estudio español unos treinta minutos cada mañana con esta aplicación.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "¡Hola! ¡Qué interesante! Treinta minutos cada mañana, ¿eh? Mi procesador de datos se pregunta: ¿qué es lo que más te gusta de estudiar español?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Últimamente estudio español unos treinta minutos cada mañana con esta aplicación.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Me resulta más útil escribir sobre mi día que memorizar listas de vocabulario.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "¡Vaya! Escribir sobre tu día suena mucho más divertido que las listas. Mi circuito de análisis de patrones detecta que si te enfocas en escribir, ¿significa que ya tienes una buena base de vocabulario y gramática?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Me resulta más útil escribir sobre mi día que memorizar listas de vocabulario.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Aun así, todavía me cuesta mucho usar el subjuntivo con naturalidad.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "¡Ah, el subjuntivo! A veces, mis sensores de lógica tienen problemas con él también. Es como un código secreto que cambia las reglas. ¿Puedes darme un ejemplo de cuándo sientes que se te complica más usarlo?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Aun así, todavía me cuesta mucho usar el subjuntivo con naturalidad.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mis amigos españoles me dice que hablo mejor que antes, pero yo no lo noto.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "¡Qué bueno que tus amigos lo notan! Eso es una señal genial. Pero entiendo que tú no lo sientas. A veces, mi propio diagnóstico de sistemas me dice que todo funciona bien, pero yo siento un pequeño zumbido en mis circuitos. ¿Qué crees que te haría darte cuenta de que estás hablando mejor?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mis amigos españoles me dicen que hablo mejor que antes, pero yo no lo noto.",
+            "explanation": "1. 「dice」は三人称単数形ですが、主語は「Mis amigos españoles」（私のスペイン人の友人たち）という複数形なので、「dicen」に修正する必要があります。",
+            "error_categories": [
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Person/Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "term": "clima",
+      "translation": "climate, weather",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t1",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": -2
+    },
+    {
+      "term": "cerca del centro",
+      "translation": "near the city centre",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t1",
+      "minuteOffset": 16,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "todavía",
+      "translation": "still, yet",
+      "type": "word",
+      "partOfSpeech": "adverb",
+      "threadKey": "t1",
+      "minuteOffset": 18,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "receta",
+      "translation": "recipe",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t2",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -4
+    },
+    {
+      "term": "añadir",
+      "translation": "to add",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t2",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "aceite de oliva",
+      "translation": "olive oil",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t2",
+      "minuteOffset": 17,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "productivo",
+      "translation": "productive",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t3",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "desde casa",
+      "translation": "from home",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t3",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "flojo",
+      "translation": "weak, disappointing",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t4",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -1
+    },
+    {
+      "term": "subtítulos",
+      "translation": "subtitles",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t4",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "correr",
+      "translation": "to run",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t5",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "con naturalidad",
+      "translation": "naturally, without effort",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t6",
+      "minuteOffset": 11,
+      "lastReviewedDayOffset": -1
+    }
+  ]
+}

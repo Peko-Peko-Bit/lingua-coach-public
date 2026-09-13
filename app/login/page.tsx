@@ -2,6 +2,14 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { createSupabaseBrowser } from "@/lib/supabase-browser";
+import { markGuestSeeded } from "@/components/GuestSeedOnEntry";
+
+/**
+ * Upper bound on how long guest sign-in waits for the demo data to be inserted.
+ * Generous on purpose: aborting only stops us waiting, the insert still lands,
+ * so a tight timeout just means arriving at an empty dashboard for a moment.
+ */
+const SEED_TIMEOUT_MS = 15000;
 
 export default function LoginPage() {
   const [googleLoading, setGoogleLoading] = useState(false);
@@ -31,7 +39,24 @@ export default function LoginPage() {
         console.error("Guest login failed", error);
         return;
       }
-      await fetch("/api/guest/seed", { method: "POST" });
+      // Demo data is a nice-to-have. If seeding fails or hangs, the guest still
+      // has a valid session, so send them into the app either way rather than
+      // leaving them stuck on the login screen.
+      //
+      // Seeding here rather than letting GuestSeedOnEntry do it keeps this — the
+      // common path — free of the reload that component needs: by the time `/`
+      // mounts the rows already exist, so it finds seeded:false and stays quiet.
+      try {
+        const abort = new AbortController();
+        const timeout = setTimeout(() => abort.abort(), SEED_TIMEOUT_MS);
+        await fetch("/api/guest/seed", { method: "POST", signal: abort.signal });
+        clearTimeout(timeout);
+        markGuestSeeded(data.user.id);
+      } catch (err) {
+        // Left unmarked on purpose: GuestSeedOnEntry is then the safety net for
+        // the abort case, where we stopped waiting but the insert may still land.
+        console.warn("Guest demo data could not be seeded", err);
+      }
       window.location.href = "/";
     } finally {
       setGuestLoading(false);

@@ -38,6 +38,7 @@ export async function GET(req: NextRequest) {
   const { data: sessionRows } = await supabase
     .from("sessions")
     .select("input_mode, created_at")
+    .eq("user_id", user.id)
     .gte("created_at", startISO)
     .lt("created_at", endISO);
 

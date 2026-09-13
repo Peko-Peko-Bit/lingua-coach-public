@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Loader2, Camera, Sun, Moon, Monitor, Settings2, X, Check } from "lucide-react";
+import { Loader2, Camera, Sun, Moon, Monitor, Settings2, X } from "lucide-react";
 import { type ColorMode } from "@/lib/themes";
-import { CHARACTERS } from "@/lib/characters";
 import type { Profile } from "@/hooks/useProfile";
 import { UserAuthSection } from "@/components/auth/UserAuthSection";
 import { PROVIDER_CONFIGS, type ProviderType } from "@/lib/ai";
@@ -14,7 +13,6 @@ interface SettingsModalProps {
   colorMode: ColorMode;
   onColorModeChange: (mode: ColorMode) => void;
   profile:          Profile;
-  onCharacterChange: (id: string) => void;
   onUserAvatarChange: (file: File | null) => void;
   isResizingAvatar: boolean;
   provider: ProviderType;
@@ -122,7 +120,7 @@ const COLOR_MODE_OPTIONS: { id: ColorMode; label: string; icon: React.ReactNode 
 
 export function SettingsModal({
   isOpen, onClose, colorMode, onColorModeChange,
-  profile, onCharacterChange, onUserAvatarChange, isResizingAvatar,
+  profile, onUserAvatarChange, isResizingAvatar,
   provider, onProviderChange, lang, onLangChange,
 }: SettingsModalProps) {
   return (
@@ -179,49 +177,6 @@ export function SettingsModal({
             <p className="text-xs font-semibold text-[var(--text-dim)] uppercase tracking-widest mb-4">
               Profile
             </p>
-
-            {/* Character selection grid */}
-            <div className="mb-4">
-              <p className="text-[10px] font-semibold text-[var(--text-dim)] uppercase tracking-widest mb-2">
-                AI Tutor Character
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                {CHARACTERS.map((char) => {
-                  const isActive = profile.characterId === char.id;
-                  return (
-                    <button
-                      key={char.id}
-                      type="button"
-                      onClick={() => onCharacterChange(char.id)}
-                      className={`
-                        flex items-center gap-3 px-3 py-2.5 rounded-xl border text-left transition-all duration-150
-                        ${isActive
-                          ? "border-[var(--accent-border-focus)] bg-[var(--accent-10)]"
-                          : "border-[var(--border)] bg-[var(--bg-elevated)] hover:border-[var(--accent-border)]"
-                        }
-                      `}
-                    >
-                      <img
-                        src={char.avatarSrc}
-                        alt={char.name}
-                        className="w-10 h-10 rounded-full flex-shrink-0"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <p className={`text-xs font-semibold truncate ${isActive ? "text-[var(--accent-text)]" : "text-[var(--text-secondary)]"}`}>
-                          {char.name}
-                        </p>
-                        <p className="text-[10px] text-[var(--text-dim)] truncate">{char.description}</p>
-                      </div>
-                      {isActive && (
-                        <div className="w-4 h-4 rounded-full bg-[var(--accent)] flex items-center justify-center flex-shrink-0">
-                          <Check size={10} strokeWidth={3} className="text-[var(--accent-fg)]" />
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
 
             {/* User avatar */}
             <div className="flex justify-center mb-4">

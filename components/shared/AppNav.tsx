@@ -36,7 +36,7 @@ export function AppNav({ current }: AppNavProps) {
           href={LINGUAGYM_URL}
           className="px-2.5 py-1 rounded-lg text-xs font-medium text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] transition-colors"
         >
-          TransMaster <ExternalLink size={12} className="inline-block ml-0.5" />
+          LinguaGym <ExternalLink size={12} className="inline-block ml-0.5" />
         </a>
       )}
     </nav>

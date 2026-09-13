@@ -16,6 +16,8 @@ import {
   type ThreadRecord,
 } from "@/lib/db-client";
 import { type LanguageCode } from "@/lib/languages";
+import { resolveCharacterIdForLanguage } from "@/lib/characters";
+import { readLastCharacterId, writeLastCharacterId } from "@/lib/character-preference";
 
 export type { ThreadRecord };
 
@@ -42,8 +44,21 @@ export function useThreads(language: LanguageCode) {
       });
   }, []);
 
-  /** Create a new thread and make it active */
-  const createThread = useCallback(async (): Promise<string> => {
+  /**
+   * Create a new thread and make it active.
+   *
+   * The character is fixed here for the lifetime of the thread. Pass one to
+   * start a chat with a specific character (the empty-state picker does this,
+   * which also makes it the pre-selection for later chats); omit it to inherit
+   * the last selected character.
+   */
+  const createThread = useCallback(async (characterId?: string): Promise<string> => {
+    const threadCharacterId = resolveCharacterIdForLanguage(
+      characterId ?? readLastCharacterId(),
+      language,
+    );
+    if (characterId) writeLastCharacterId(threadCharacterId);
+
     // Delete all empty threads (0 messages)
     const emptyIds: string[] = [];
     await Promise.all(
@@ -70,6 +85,7 @@ export function useThreads(language: LanguageCode) {
       completed:       false,
       score:           null,
       language,
+      characterId:     threadCharacterId,
     };
     await putThread(thread);
     setThreads((prev) => [thread, ...prev]);

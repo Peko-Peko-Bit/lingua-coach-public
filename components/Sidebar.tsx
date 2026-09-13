@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronsLeft, MessageCircleMore, BookOpen, SquarePen, Loader2, Trash2, Settings2 } from "lucide-react";
 import type { ThreadRecord } from "@/lib/db";
 import type { VocabularyEntry } from "@/lib/db/vocabulary";
+import { resolveCharacter } from "@/lib/characters";
 import { VocabularyPanel } from "./VocabularyPanel";
 import { UserAuthSection } from "@/components/auth/UserAuthSection";
 
@@ -151,6 +152,7 @@ export function Sidebar({
 
               {filteredThreads.map((thread) => {
                 const isActive = thread.id === activeThreadId;
+                const character = resolveCharacter(thread.characterId);
                 return (
                   <div
                     key={thread.id}
@@ -164,11 +166,22 @@ export function Sidebar({
                       }
                     `}
                   >
-                    <MessageCircleMore
-                      size={14}
-                      strokeWidth={1.8}
-                      className={`flex-shrink-0 ${isActive ? "text-white" : "text-[var(--text-dim)]"}`}
-                    />
+                    {/* Character avatar — makes the per-thread character visible
+                        at a glance. Grammar threads have none, so they keep the
+                        chat icon. */}
+                    {thread.type === "grammar" ? (
+                      <MessageCircleMore
+                        size={14}
+                        strokeWidth={1.8}
+                        className={`flex-shrink-0 ${isActive ? "text-white" : "text-[var(--text-dim)]"}`}
+                      />
+                    ) : (
+                      <img
+                        src={character.avatarSrc}
+                        alt={character.name}
+                        className="w-3.5 h-3.5 rounded-full object-cover flex-shrink-0"
+                      />
+                    )}
                     <span className="flex-1 text-xs truncate">{thread.title}</span>
                     <button
                       onClick={(e) => {

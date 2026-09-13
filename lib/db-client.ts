@@ -30,6 +30,7 @@ function toThread(row: Record<string, unknown>): ThreadRecord {
     completed:       (row.completed as boolean) ?? false,
     score:           (row.score as number | null) ?? null,
     language:        (row.language as string) ?? "es",
+    characterId:     (row.character_id as string | null) ?? null,
   };
 }
 
@@ -47,6 +48,7 @@ function fromThread(t: ThreadRecord) {
     completed:         t.completed ?? false,
     score:             t.score ?? null,
     language:          t.language ?? "es",
+    character_id:      t.characterId ?? null,
   };
 }
 

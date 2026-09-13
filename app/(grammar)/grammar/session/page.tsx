@@ -104,6 +104,7 @@ function GrammarSessionContent() {
             completed:       false,
             score:           null,
             language:        lang,
+            characterId:     null,   // grammar mode runs without a character
           });
           setThreadId(newThreadId);
         }

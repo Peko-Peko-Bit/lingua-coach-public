@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { DEFAULT_CHARACTER_ID } from "@/lib/characters";
 
+// The AI tutor character is NOT part of the profile: it is fixed per thread
+// (threads.character_id). See lib/character-preference.ts for the "last
+// selected character" used to pre-select the picker.
 const KEYS = {
-  characterId: "profile_character_id",
-  userAvatar:  "profile_user_avatar",
+  userAvatar: "profile_user_avatar",
 };
 
 export interface Profile {
-  characterId: string;
-  userAvatar:  string | null;
+  userAvatar: string | null;
 }
 
 /** Resize image to at most maxPx px and return a JPEG data URL */
@@ -35,23 +35,12 @@ async function resizeImage(file: File, maxPx = 256): Promise<string> {
 }
 
 export function useProfile() {
-  const [profile, setProfile] = useState<Profile>({
-    characterId: DEFAULT_CHARACTER_ID,
-    userAvatar:  null,
-  });
+  const [profile, setProfile] = useState<Profile>({ userAvatar: null });
   const [isResizing, setIsResizing] = useState(false);
 
   useEffect(() => {
-    setProfile({
-      characterId: localStorage.getItem(KEYS.characterId) ?? DEFAULT_CHARACTER_ID,
-      userAvatar:  localStorage.getItem(KEYS.userAvatar)  ?? null,
-    });
+    setProfile({ userAvatar: localStorage.getItem(KEYS.userAvatar) ?? null });
   }, []);
-
-  const updateCharacter = (characterId: string) => {
-    localStorage.setItem(KEYS.characterId, characterId);
-    setProfile(p => ({ ...p, characterId }));
-  };
 
   const updateUserAvatar = async (file: File | null) => {
     if (!file) {
@@ -69,5 +58,5 @@ export function useProfile() {
     }
   };
 
-  return { profile, updateCharacter, updateUserAvatar, isResizing };
+  return { profile, updateUserAvatar, isResizing };
 }

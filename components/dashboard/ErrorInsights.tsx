@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { putThread } from "@/lib/db-client";
+import { readLastCharacterId } from "@/lib/character-preference";
 import { Spinner } from "@/components/ui/Spinner";
 
 interface ErrorEntry {
@@ -78,6 +79,9 @@ export function ErrorInsights({ language }: ErrorInsightsProps) {
         completed:       false,
         score:           null,
         language,
+        // The picker is skipped for practice threads (the AI speaks first), so
+        // inherit the last selected character.
+        characterId:     readLastCharacterId(),
       });
       const encodedExamples = encodeURIComponent(JSON.stringify(examples));
       router.push(

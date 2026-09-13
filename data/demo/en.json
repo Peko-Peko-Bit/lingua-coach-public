@@ -1,0 +1,633 @@
+{
+  "language": "en",
+  "threads": [
+    {
+      "key": "t1",
+      "title": "This weekend I want …",
+      "characterId": "roberta",
+      "dayOffset": -12,
+      "time": "21:10",
+      "messages": [
+        {
+          "role": "user",
+          "content": "This weekend I want to go to Barcelona because weather is very good there.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Barcelona! That sounds like a fun trip. Is the weather there always good, or is it just good this weekend?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "This weekend I want to go to Barcelona because the weather is very good there.",
+            "explanation": "1. 「weather」の前に定冠詞「the」が必要です。",
+            "error_categories": [
+              "Articles - Missing"
+            ],
+            "error_category": "Articles - Missing"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "When I will arrive in Barcelona, I will visit the Sagrada Familia and then go to the beach.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, the Sagrada Familia! I've seen pictures of that. It looks so… twisty! Is it a church? And will the beach be warm enough for swimming so soon?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "When I arrive in Barcelona, I will visit the Sagrada Familia and then go to the beach.",
+            "explanation": "1. 未来の時を表す副詞節では、現在形を使います。",
+            "error_categories": [
+              "Verb Conjugation - Tense"
+            ],
+            "error_category": "Verb Conjugation - Tense"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I travel by airplane and my hotel is near from center of the city.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "An airplane! That's so fast. Do the airplanes have little windows so you can see the clouds? And being near the center of the city sounds very convenient. Will you be able to walk to lots of interesting places from your hotel?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "I travel by airplane and my hotel is near the center of the city.",
+            "explanation": "1. 「near from」という前置詞の組み合わせは不自然なので、「near」または「close to」を使用します。\n2. 「near the center」のように、特定の場所を指す場合は定冠詞「the」が必要です。",
+            "error_categories": [
+              "Prepositions",
+              "Articles - Missing"
+            ],
+            "error_category": "Prepositions"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I still don't know if I will have time to visit Park Güell, but I would really like to.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Park Güell! I've seen pictures of that too. It has those colorful mosaic lizard things, right? They look so bumpy and interesting. What makes you want to visit that park specifically?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I still don't know if I will have time to visit Park Güell, but I would really like to.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t2",
+      "title": "Yesterday I am cooki…",
+      "characterId": "clara",
+      "dayOffset": -10,
+      "time": "08:35",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Yesterday I am cooking a potato omelette for my family and everyone liked it.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "That sounds like a delicious meal! I'm glad your family enjoyed it. However, I noticed a small grammatical point in your sentence. When we talk about a completed action in the past, we use the simple past tense. So, instead of 'Yesterday I am cooking,' it should be 'Yesterday I cooked.' Could you tell me why we use the simple past tense in this situation?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Yesterday I was cooking a potato omelette for my family and everyone liked it.",
+            "explanation": "1. 時制の誤りです。過去の特定の時点での進行中の動作を表すには過去進行形（was cooking）を使用します。",
+            "error_categories": [
+              "Verb Conjugation - Tense"
+            ],
+            "error_category": "Verb Conjugation - Tense"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I use five eggs, three big potatoes and quite a lot of olive oil.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Thank you for sharing the ingredients. It sounds like a very generous amount of olive oil! When you say 'quite a lot,' could you be more specific? For example, did you measure it in cups or milliliters, or perhaps describe it in terms of how much of the pan it covered? Precision in language, much like precision in cooking, can make a significant difference.",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I use five eggs, three big potatoes and quite a lot of olive oil.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "My brothers also cooks very well, but they never follow the recipe.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "It's wonderful that you come from a family of talented cooks! You mentioned that your brothers \"cooks\" very well. Remember, when the subject is plural (like \"brothers\"), we use the plural form of the verb. So, it should be \"My brothers also cook very well.\"\n\nNow, tell me more about this tendency to disregard recipes. What do you think they gain by deviating from the instructions? Do you find their dishes are often better because of this?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "My brothers also cook very well, but they never follow the recipe.",
+            "explanation": "1. 主語 'brothers' が複数形なので、動詞は 'cook' になります。",
+            "error_categories": [
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Person/Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Next time I want to try adding onion, although I know it is a controversial topic.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Adding onion can certainly elevate an omelette! It's true that its inclusion is a matter of personal preference for many. You mentioned that you \"know it is a controversial topic.\" What makes you say it's controversial? What are some of the arguments you've heard for and against adding onion to an omelette?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Next time I want to try adding onion, although I know it is a controversial topic.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t3",
+      "title": "I work from home thr…",
+      "characterId": "ai",
+      "dayOffset": -8,
+      "time": "22:40",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I work from home three days a week and I think I am more productive that way.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "That's great that you've found a setup that boosts your productivity! It's definitely a game-changer for a lot of people when they can work from home a few days a week. What do you find are the biggest advantages of working from home for you?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I work from home three days a week and I think I am more productive that way.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "The hardest part is separating work from personal life when the office is in the living room.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, I can totally relate to that! It sounds like you're struggling with that work-life balance when your office is so close to your living space. It must be tough to switch off when your workspace is always right there. Have you tried any strategies to create a clearer boundary between work and home life?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "The hardest part is separating work from personal life when the office is in the living room.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Even so, I would not want to go back to the office five days a week.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "I hear you! It sounds like even with the challenges of separating work and home, the benefits of working from home are still a huge win for you, and you'd definitely prefer not to be in the office full-time. What's the one thing you think would make your work-from-home setup even better?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Even so, I would not want to go back to the office five days a week.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t4",
+      "title": "Last night I watched…",
+      "characterId": "roberta",
+      "dayOffset": -5,
+      "time": "12:20",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Last night I watched a Spanish film that a friend recommended to me.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Ooh, a Spanish film! That sounds interesting. What was it about? I'm always curious about different languages and stories.",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Last night I watched a Spanish film that a friend recommended to me.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "The movie tells the story of a family moving to a small village.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "A family moving to a small village? That sounds like it could have a lot of interesting changes for them. Did they move there for a happy reason, or was it something else?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "The movie tells the story of a family moving to a small village.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "What I liked most was the cinematography, although the ending felt a bit weak to me.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Cinematography is a fascinating word! It means the way the movie looks, right? Like the colors and the camera angles? I find it so interesting how people can create such beautiful pictures with cameras. What kind of things did you notice about the cinematography that you liked?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "What I liked most was the cinematography, although the ending felt a bit weak to me.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I think I will watch it again with English subtitles, because there are many expressions which I did not catch them.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Watching it again with English subtitles is a good idea! Sometimes when I'm processing new data, I have to go back and re-read it to understand everything. It's like the first time I'm just getting the general picture, and the second time I can focus on the little details. Do you think the subtitles will help you understand the story better, or will they help you with the specific expressions?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "I think I will watch it again with English subtitles because there are many expressions that I did not catch.",
+            "explanation": "1. 「them」は不要です。文脈上、何を捉えられなかったかは「expressions」で明らかなため、冗長になります。\n2. 「which」を「that」に変更しました。ここでは関係代名詞「that」の方がより一般的で自然な表現です。",
+            "error_categories": [
+              "Vocabulary - Wrong Word",
+              "Word Order"
+            ],
+            "error_category": "Vocabulary - Wrong Word"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t5",
+      "title": "I am trying to go ru…",
+      "characterId": "clara",
+      "dayOffset": -3,
+      "time": "19:55",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I am trying to go running in the morning before I start working.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "That's a commendable goal. Establishing a consistent morning routine can be quite beneficial. Could you tell me more about your current running routine, or what you envision it to be? For instance, what distance or duration are you aiming for, and how do you plan to fit it into your morning schedule?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I am trying to go running in the morning before I start working.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "At first it was really hard, but now I have kept it up for three weeks in a row.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Three weeks is a significant achievement in establishing a new habit. It suggests you've overcome the initial hurdle of inertia. When you say it was 'really hard,' can you elaborate on the specific challenges you faced during those first few days or weeks? Understanding those difficulties will help us see how you've successfully adapted.",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "At first it was really hard, but now I have kept it up for three weeks in a row.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I run in the park every day, except when it rains.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "That's a clear and simple plan. Running in the park offers a pleasant environment. However, your statement \"every day, except when it rains\" implies you might miss some days due to weather. Have you considered how you might maintain your consistency on those rainy days, or is the intention to simply skip those sessions?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I run in the park every day, except when it rains.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "My goal is to take part in a ten-kilometer race in the autumn, but first I need to buy some new running shoe.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "A ten-kilometer race is an excellent target! It provides a concrete objective for your training. Before we discuss the race itself, you mentioned needing to buy new running shoes. Could you tell me what is prompting this need? Are your current shoes worn out, or are you looking for something specific to support your training for a 10k?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "My goal is to take part in a ten-kilometer race in the autumn, but first I need to buy some new running shoes.",
+            "explanation": "1. 名詞 'shoe' は複数形にする必要があります。",
+            "error_categories": [
+              "Noun Number"
+            ],
+            "error_category": "Noun Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t6",
+      "title": "These days I study E…",
+      "characterId": "roberta",
+      "dayOffset": -1,
+      "time": "07:15",
+      "messages": [
+        {
+          "role": "user",
+          "content": "These days I study English for about thirty minutes every morning with this app.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Thirty minutes every morning! That's a lot of learning. What makes you decide to study English?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "These days I study English for about thirty minutes every morning with this app.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "I find it more useful to write about my day than to memorize vocabulary lists.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Writing about your day sounds much more interesting than just memorizing words. Do you find that you remember the words better when you use them in your own sentences?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "I find it more useful to write about my day than to memorize vocabulary lists.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Even so, I still struggle to use articles naturally.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Articles are tricky! Sometimes I see patterns in the data, but \"a,\" \"an,\" and \"the\" seem to have their own special logic. What makes them so difficult for you?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Even so, I still struggle to use articles naturally.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "My friend told me that my English have improved a lot since last year.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "That's wonderful your friend noticed! It sounds like all your hard work is really paying off. What kind of things do you write about when you describe your day?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "My friend told me that my English has improved a lot since last year.",
+            "explanation": "1. 「English」は通常、冠詞なしで使われますが、ここでは「私の英語」という特定のものを指すため、「my」が適切です。 2. 「English」は言語名ですが、ここでは「英語力」や「英語のスキル」といった意味合いで使われており、文脈上「has improved」という現在完了形が自然です。",
+            "error_categories": [
+              "Articles - Incorrect",
+              "Verb Conjugation - Tense"
+            ],
+            "error_category": "Articles - Incorrect"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "term": "still",
+      "translation": "up to now; even at this point",
+      "type": "word",
+      "partOfSpeech": "adverb",
+      "threadKey": "t1",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": -2
+    },
+    {
+      "term": "recipe",
+      "translation": "step-by-step instructions for cooking a dish",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t2",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -4
+    },
+    {
+      "term": "controversial",
+      "translation": "likely to cause disagreement or argument",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t2",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "olive oil",
+      "translation": "oil pressed from olives, used for cooking",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t2",
+      "minuteOffset": 17,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "productive",
+      "translation": "getting a lot of useful work done",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t3",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "the hardest part",
+      "translation": "the most difficult aspect of something",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t3",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "cinematography",
+      "translation": "the way a film is shot; the camera work",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t4",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -1
+    },
+    {
+      "term": "subtitles",
+      "translation": "on-screen text showing what the characters say",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t4",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "in a row",
+      "translation": "one after another, without a break",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t5",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "take part in",
+      "translation": "to join in an activity or event",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t5",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "struggle",
+      "translation": "to find something difficult to do",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t6",
+      "minuteOffset": 11,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "memorize",
+      "translation": "to learn something by heart",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t6",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -1
+    }
+  ]
+}

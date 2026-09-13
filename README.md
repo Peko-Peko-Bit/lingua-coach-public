@@ -6,11 +6,25 @@ LinguaCoach is a chat-based language tutor. You converse freely with an AI chara
 
 **Live:** https://linguacoach.pekobit.com/
 
-<!-- TODO: add screenshots -->
+<p align="center">
+  <img src=".github/screenshots/chat-and-grammar-check.webp" width="820" alt="Chat with an AI character while the grammar check panel corrects the last message and explains why">
+</p>
+
+<p align="center">
+  <img src=".github/screenshots/dashboard.webp" width="405" alt="Dashboard with accuracy, an activity calendar and per-category error insights">
+  <img src=".github/screenshots/vocabulary.webp" width="405" alt="Selecting a word mid-conversation to translate it and add it to the vocabulary list">
+</p>
+
+<p align="center">
+  <img src=".github/screenshots/grammar-mode.webp" width="220" alt="Grammar mode topic list drawn from the B1/B2 curriculum">
+</p>
+
+<p align="center"><sub>Chat with the grammar check running alongside · the dashboard and in-chat word lookup · grammar mode's topic list. Screens show the guest demo data.</sub></p>
 
 ## Features
 
-- **AI conversation practice** — free chat in Spanish, French, or English with two selectable characters (Roberta, a curious robot girl, and Emma); the tutor is prompted to challenge your ideas and ask probing follow-ups rather than flatter you
+- **AI conversation practice** — free chat in Spanish, French, or English with three selectable characters (a plain **AI** with no assigned persona, Roberta, a curious robot girl, and Clara, a composed language teacher); the persona characters are prompted to challenge your ideas and ask probing follow-ups rather than flatter you
+- **One character per conversation** — you pick who you're talking to when you start a chat, and that choice is fixed for the rest of it, so a conversation is never retroactively re-skinned and the model never has a different persona swapped in mid-thread; switching characters simply starts a new chat, and the sidebar shows each conversation's character
 - **Automatic grammar check on every message** — runs alongside the conversation without interrupting it: original vs. corrected text, a clear explanation, and one or more error categories from a fixed taxonomy (articles, verb conjugation, word order, prepositions, noun gender/number, vocabulary, spelling, accent marks)
 - **Grammar mode** — structured B1/B2 curriculum organized into units and topics; pick a topic (or let the app suggest the next one), practice it in conversation, and track per-topic progress with resumable sessions
 - **Learning dashboard**
@@ -22,7 +36,7 @@ LinguaCoach is a chat-based language tutor. You converse freely with an AI chara
   | Vocabulary | Saved words and phrases, shared with LinguaGym |
 - **Tap-to-translate vocabulary** — select any word or phrase in the chat to translate it in a popup and save it; single words are normalized to dictionary form (lemma + part of speech) in the background
 - **Model picker with fallback chains** — all AI calls go through OpenRouter; besides the default (Gemini 2.5 Flash Lite) you can pick Mistral/Llama/Gemma presets or an Auto mode that routes simple messages to a light model and complex ones (detected via per-language patterns) to a stronger chain
-- **Guest mode** — one-click anonymous sign-in to try the app without an account; guest data expires automatically
+- **Guest mode** — one-click anonymous sign-in to try the app without an account, pre-filled with a two-week sample history in all three languages so the dashboard is populated from the first screen; guest data expires automatically
 - **PWA** — installable, mobile-first responsive layout with per-language UI theming
 - **Part of a learning ecosystem** — shares its Supabase backend (auth, vocabulary, study data) with **LinguaGym**, a companion translation-training app; LinguaGym's segment check results feed this dashboard, and cross-app navigation links the two
 
@@ -85,6 +99,7 @@ Required keys in `.env.local`:
 | `SUPABASE_SERVICE_ROLE_KEY` | server-side DB access from route handlers |
 | `OPENROUTER_API_KEY` | all AI features (chat, grammar check, word normalization) |
 | `GOOGLE_TRANSLATE_API_KEY` | word/phrase translation popup |
+| `ALLOWED_EMAILS` | comma-separated allowlist for Google sign-in; unset rejects every Google sign-in (guest mode is unaffected) |
 
 Optional: `NEXT_PUBLIC_COOKIE_DOMAIN` (cross-subdomain auth with LinguaGym), `NEXT_PUBLIC_LINGUAGYM_URL` (cross-app nav link), `NEXT_PUBLIC_APP_URL` (OpenRouter referer header), `GOOGLE_GENERATIVE_AI_API_KEY` (direct Google AI Studio endpoint), `ADMIN_SECRET` (admin error re-categorization endpoint).
 
@@ -93,3 +108,9 @@ Database schema and migrations live in [supabase/migrations/](supabase/migration
 ## Deployment
 
 Deployed on **Vercel** — push to `main` triggers a production build. Supabase hosts the database and auth; expired guest accounts are purged by a scheduled cleanup job on the shared Supabase backend.
+
+## About this repository
+
+This is a public mirror of the private repository LinguaCoach is developed in. It is updated by snapshot, so the history here is one commit per sync rather than the development history, and a small number of files are not included. Issues and pull requests are welcome, but changes are applied upstream and arrive here with the next sync.
+
+Licensed under the [MIT License](LICENSE).

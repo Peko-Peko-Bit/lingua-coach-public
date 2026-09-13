@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase-server";
 import { createAuthServerClient } from "@/lib/supabase-auth-server";
+import { CHARACTERS } from "@/lib/characters";
 
 // GET /api/threads — return list of chat threads
 export async function GET() {
@@ -43,6 +44,11 @@ export async function POST(req: NextRequest) {
     completed:         body.completed ?? false,
     score:             body.score ?? null,
     language:          body.language ?? "es",
+    // Only known character IDs are stored; anything else becomes null and
+    // resolves to the default character on read.
+    character_id:      CHARACTERS.some((c) => c.id === body.character_id)
+                         ? (body.character_id as string)
+                         : null,
     user_id:           user.id,
   };
   const { error } = await supabase.from("threads").insert(row);

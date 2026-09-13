@@ -108,6 +108,9 @@ export async function POST(req: NextRequest) {
     : undefined;
 
   const character = characterId ? CHARACTERS.find((c) => c.id === characterId) : undefined;
+  // Bare mode: a character with no `prompt` field runs the raw LLM with no
+  // system prompt at all. grammar_mode is left untouched — it always wins.
+  const bareMode = !grammar_mode && !!character && character.prompt === undefined;
   const basePrompt = character?.prompt ?? "";
   const topicSuffix = topic_focus
     ? `\n\n== PRACTICE FOCUS ==\nThe user came here specifically to practice: "${topic_focus}". On your FIRST reply, greet them briefly and immediately invite them to practice this grammar point — for example, ask them to form a sentence using "${topic_focus}" or offer a simple exercise. Keep the entire conversation focused on improving "${topic_focus}" until the user changes the subject.`
@@ -137,6 +140,7 @@ export async function POST(req: NextRequest) {
       characterPrompt,
       systemPromptOverride,
       grammarMode: grammar_mode,
+      bareMode,
     };
 
     // grammar_mode: Gemini returns grammar_check too, so single request

@@ -5,9 +5,10 @@ import React from "react";
 import Link from "next/link";
 import {
   LayoutDashboard, BookOpen, MessageCircleMore, BookMarked,
-  Settings2, HelpCircle, ArrowLeftRight, ExternalLink, ArrowLeft, Play,
+  Settings2, HelpCircle, ArrowLeftRight, ExternalLink, ArrowLeft, Play, Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useUser } from "@/hooks/useUser";
 import { WelcomeSection } from "@/components/dashboard/WelcomeSection";
 import { FullScreenLoader } from "@/components/ui/FullScreenLoader";
 import { ActivityCalendar } from "@/components/dashboard/ActivityCalendar";
@@ -62,7 +63,7 @@ function DashboardSidebar() {
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)]"
           >
             <ArrowLeftRight size={16} strokeWidth={1.8} className="flex-shrink-0" />
-            TransMaster <ExternalLink size={12} className="inline-block ml-0.5" />
+            LinguaGym <ExternalLink size={12} className="inline-block ml-0.5" />
           </a>
         )}
       </nav>
@@ -101,8 +102,13 @@ function NavItem({
 // ============================================================
 export default function DashboardPage() {
   const { language } = useLanguage();
+  const { user } = useUser();
   const [summary, setSummary] = useState<SummaryData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Guests are seeded with demo conversations on sign-in (app/api/guest/seed),
+  // so say so rather than letting the numbers read as someone's real history.
+  const isGuest = user?.is_anonymous === true;
 
   useEffect(() => {
     let cancelled = false;
@@ -139,6 +145,18 @@ export default function DashboardPage() {
           <FullScreenLoader />
         ) : (
           <div className="p-4 lg:p-6 max-w-5xl mx-auto space-y-5">
+            {isGuest && (
+              <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl
+                              bg-[var(--accent-10)] border border-[var(--accent-border)]
+                              text-sm text-[var(--text-secondary)]">
+                <Sparkles size={16} className="flex-shrink-0 mt-0.5 text-[var(--accent-text)]" />
+                <p>
+                  <span className="font-semibold text-[var(--accent-text)]">Sample data</span>
+                  {" — guest accounts start with a demo history so you can explore the dashboard right away."}
+                </p>
+              </div>
+            )}
+
             <WelcomeSection
               accuracy={summary?.accuracy.current ?? null}
               diff={summary?.accuracy.diff ?? null}

@@ -20,6 +20,12 @@ export interface ThreadRecord {
   completed:       boolean;
   score:           number | null; // 0-100, null=unrated. 5-star: 1★=20…5★=100
   language:        string;        // ISO 639-1: 'es', 'en', etc.
+  /**
+   * AI tutor character, fixed for the lifetime of the thread.
+   * null = legacy thread (resolves to the default character) or a grammar
+   * thread, which has no character. Resolve via resolveCharacter().
+   */
+  characterId:     string | null;
 }
 
 export interface MessageRecord {
@@ -154,6 +160,7 @@ function toThread(row: Record<string, unknown>): ThreadRecord {
     completed:       (row.completed as boolean) ?? false,
     score:           (row.score as number | null) ?? null,
     language:        (row.language as string) ?? "es",
+    characterId:     (row.character_id as string | null) ?? null,
   };
 }
 
@@ -170,6 +177,7 @@ function fromThread(t: ThreadRecord) {
     completed:         t.completed ?? false,
     score:             t.score ?? null,
     language:          t.language ?? "es",
+    character_id:      t.characterId ?? null,
   };
 }
 

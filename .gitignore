@@ -60,3 +60,6 @@ next-env.d.ts
 
 # local design/planning docs (not tracked)
 /docs/
+
+# raw output + review reports of the demo-conversation generator (regenerable)
+/scripts/.demo-out/

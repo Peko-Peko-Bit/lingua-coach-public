@@ -8,9 +8,11 @@ import { useTheme } from "@/hooks/useTheme";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useProfile } from "@/hooks/useProfile";
 import { useVocabulary } from "@/hooks/useVocabulary";
-import { CHARACTERS } from "@/lib/characters";
+import { resolveCharacter } from "@/lib/characters";
+import { useLastCharacterId } from "@/lib/character-preference";
 import { LANGUAGE_LIST, type LanguageCode } from "@/lib/languages";
 import { Sidebar } from "@/components/Sidebar";
+import { CharacterPicker } from "@/components/CharacterPicker";
 import { SettingsModal } from "@/components/SettingsModal";
 import { VocabularyPopup } from "@/components/VocabularyPopup";
 import { Avatar } from "@/components/Avatar";
@@ -149,6 +151,7 @@ export default function ChatPage() {
   const [settingsOpen, setSettingsOpen]     = useState(false);
   const [topicFocus, setTopicFocus]           = useState<string | undefined>(undefined);
   const [pendingThreadId, setPendingThreadId]  = useState<string | null>(null);
+  const [paramsRead, setParamsRead]            = useState(false);
   const [practiceExamples, setPracticeExamples] = useState<PracticeExample[] | null>(null);
   const [isStarting, setIsStarting]            = useState(true);
   const [selectedGrammarMsgId, setSelectedGrammarMsgId] = useState<string | null>(null);
@@ -179,6 +182,9 @@ export default function ChatPage() {
         try { setPracticeExamples(JSON.parse(decodeURIComponent(ex))); } catch {}
       }
     } catch {}
+    // Until this runs we don't know whether this is a practice thread, and the
+    // character picker must not be shown for those.
+    setParamsRead(true);
   }, []);
   const messagesEndRef  = useRef<HTMLDivElement>(null);
   const inputBarRef     = useRef<HTMLDivElement>(null);
@@ -191,10 +197,7 @@ export default function ChatPage() {
   const { theme, colorMode, setColorMode } = useTheme(language);
 
   // ---- Profile ----
-  const { profile, updateCharacter, updateUserAvatar, isResizing: isResizingAvatar } = useProfile();
-  const activeCharacter = CHARACTERS.find((c) => c.id === profile.characterId) ?? CHARACTERS[0];
-  const characterAvatarSrc = activeCharacter?.avatarSrc ?? null;
-  const aiName = activeCharacter?.name ?? "";
+  const { profile, updateUserAvatar, isResizing: isResizingAvatar } = useProfile();
 
 
   // ---- Thread management ----
@@ -209,6 +212,19 @@ export default function ChatPage() {
     updateTitle,
     touchThread,
   } = useThreads(language);
+
+  // ---- Character (fixed per thread) ----
+  // Comes from the active thread, never from a global setting, so past
+  // conversations keep the character they were held with.
+  const activeCharacter = resolveCharacter(
+    threads.find((t) => t.id === activeThreadId)?.characterId
+  );
+  const characterAvatarSrc = activeCharacter.avatarSrc;
+  const aiName = activeCharacter.name;
+  // Pre-selection for the picker: the last character the user chose. While the
+  // thread list is still loading there is no thread to read from, so the picker
+  // shows this instead of flashing the default.
+  const lastCharacterId = useLastCharacterId();
 
   // On startup: always open a new chat (runs once; ref prevents re-fire on language switch)
   useEffect(() => {
@@ -277,17 +293,29 @@ export default function ChatPage() {
     [updateTitle]
   );
 
-  const handleNewChat = useCallback(async () => {
+  const startNewThread = useCallback(async (characterId?: string) => {
     if (isCreatingThreadRef.current) return;
     isCreatingThreadRef.current = true;
     setIsCreatingThread(true);
     try {
-      await createThread();
+      await createThread(characterId);
     } finally {
       isCreatingThreadRef.current = false;
       setIsCreatingThread(false);
     }
   }, [createThread]);
+
+  // Wrappers take no event argument on purpose: these are wired straight to
+  // onClick, which would otherwise pass the MouseEvent as characterId.
+  const handleNewChat = useCallback(() => { startNewThread(); }, [startNewThread]);
+
+  // Picking a character starts a fresh thread with it. The current thread is
+  // still empty at this point, and createThread() clears empty threads, so this
+  // retags the chat in place rather than piling up threads.
+  const handleSelectCharacter = useCallback(
+    (characterId: string) => { startNewThread(characterId); },
+    [startNewThread]
+  );
 
   // ---- Vocabulary ----
   const activeThreadTitle = threads.find((t) => t.id === activeThreadId)?.title ?? "New Chat";
@@ -312,7 +340,7 @@ export default function ChatPage() {
     sendMessage,
     sendGreeting,
     translateMessage,
-  } = useAIChat("gemini-flash-lite", activeThreadId, handleFirstMessage, aiName, language, profile.characterId, undefined, undefined, topicFocus, explanationLang);
+  } = useAIChat("gemini-flash-lite", activeThreadId, handleFirstMessage, aiName, language, activeCharacter.id, undefined, undefined, topicFocus, explanationLang);
 
   // Threads opened via Practice button: AI speaks first
   useEffect(() => {
@@ -443,7 +471,6 @@ export default function ChatPage() {
         colorMode={colorMode}
         onColorModeChange={setColorMode}
         profile={profile}
-        onCharacterChange={updateCharacter}
         onUserAvatarChange={updateUserAvatar}
         isResizingAvatar={isResizingAvatar}
         provider={provider}
@@ -554,8 +581,9 @@ export default function ChatPage() {
             </button>
 
             <button
-              onClick={createThread}
-              className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors p-1.5 rounded-lg hover:bg-[var(--bg-elevated)]"
+              onClick={handleNewChat}
+              disabled={isCreatingThread}
+              className="text-[var(--text-muted)] hover:text-[var(--text-secondary)] transition-colors p-1.5 rounded-lg hover:bg-[var(--bg-elevated)] disabled:opacity-60"
               title="New Chat"
             >
               <SquarePen size={16} strokeWidth={1.5} />
@@ -587,10 +615,23 @@ export default function ChatPage() {
               <div className="w-16 h-16 rounded-2xl bg-[var(--accent-10)] border border-[var(--accent-border)] overflow-hidden flex items-center justify-center">
                 <img src={langConfig.flagSrc} alt={langConfig.nativeName} className="w-12 h-9 object-cover rounded" />
               </div>
-              <div className="text-center">
-                <p className="text-white text-base font-medium mb-1">{langConfig.greeting} Soy {aiName}</p>
-                <p className="text-[var(--text-muted)] text-sm">Start chatting in {langConfig.nativeName}</p>
-              </div>
+              {/* The picker is only for a chat the user is expected to start.
+                  Practice threads (?topic=) have the AI speak first, so it stays
+                  hidden there — including before the query params have been read
+                  and while the greeting is in flight, or it would flash. */}
+              {paramsRead && !topicFocus && !isLoading ? (
+                <CharacterPicker
+                  language={language}
+                  selectedId={activeThreadId ? activeCharacter.id : lastCharacterId}
+                  onSelect={handleSelectCharacter}
+                  disabled={isCreatingThread || isSwitchingLanguage}
+                />
+              ) : (
+                <div className="text-center">
+                  <p className="text-white text-base font-medium mb-1">{langConfig.greeting} Soy {aiName}</p>
+                  <p className="text-[var(--text-muted)] text-sm">Start chatting in {langConfig.nativeName}</p>
+                </div>
+              )}
             </div>
           )}
 

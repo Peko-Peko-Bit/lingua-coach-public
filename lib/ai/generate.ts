@@ -9,6 +9,19 @@ import { LANGUAGES, DEFAULT_LANGUAGE, type LanguageCode, type LanguageMeta } fro
 
 const DEFAULT_AI_NAME = "Roberta";
 
+const DEFAULT_MAX_TOKENS = 1024;
+
+// Plain-AI ("bare") mode: no persona, tutor framing, or JSON contract. A raw
+// LLM with no system prompt is very verbose, so we send a single format-only
+// line (conversational shape only — not a personality). It steers toward a
+// natural one-paragraph reply and forbids markdown / long option lists, while
+// leaving room for the model's own intelligence; "a few sentences" avoids the
+// robotic terseness of a hard 1-3 sentence cap. response_format stays off; the
+// prose reply is caught by parser Step 4. BARE_MODE_MAX_TOKENS is a safety
+// ceiling — replies naturally land around ~80 tokens, well under it.
+const BARE_MODE_SYSTEM = "Reply in a natural, conversational way: a few sentences, and ask a follow-up question when it fits. Keep it to one short paragraph. No markdown, bullet points, headings, or long lists of options.";
+const BARE_MODE_MAX_TOKENS = 448;
+
 function buildSystemPrompt(
   aiName: string,
   language: LanguageMeta,
@@ -56,16 +69,43 @@ async function callOpenRouter(
   language: LanguageMeta = LANGUAGES[DEFAULT_LANGUAGE],
   characterPrompt?: string,
   systemPromptOverride?: string,
-  fallbackModels?: string[]
+  fallbackModels?: string[],
+  bareMode = false
 ): Promise<AIResponse> {
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) throw new Error("OPENROUTER_API_KEY is not set");
 
-  const systemContent = systemPromptOverride ?? buildSystemPrompt(aiName, language, characterPrompt);
+  // bareMode: no persona / tutor framing / JSON contract — just a minimal
+  // format-only line (BARE_MODE_SYSTEM) to keep the raw LLM's replies short.
+  const systemContent = bareMode
+    ? BARE_MODE_SYSTEM
+    : (systemPromptOverride ?? buildSystemPrompt(aiName, language, characterPrompt));
 
   // The models array shares one request body, so response_format must suit
   // every model in the chain — drop it if any of them is Gemini.
   const modelChain = [modelId, ...(fallbackModels ?? [])];
+
+  const body = {
+    model: modelId,
+    ...(modelChain.length > 1 && { models: modelChain }),
+    messages: [
+      { role: "system", content: systemContent },
+      ...history,
+      { role: "user", content: userMessage },
+    ],
+    temperature: 0.7,
+    max_tokens: bareMode ? BARE_MODE_MAX_TOKENS : DEFAULT_MAX_TOKENS,
+    // json_object mode requires the word "json" somewhere in the messages
+    // (OpenAI-compatible constraint). Bare mode's minimal prompt doesn't mention
+    // json, so drop response_format and let the model return prose — parser
+    // Step 4 Auto-Wrap handles it. Also excluded for Gemini via OpenRouter,
+    // which doesn't support json_object mode.
+    ...(!bareMode && !modelChain.some((m) => m.includes("gemini")) && { response_format: { type: "json_object" } }),
+  };
+
+  console.log(
+    `[AI] OpenRouter request: model=${modelId} systemPrompt=${bareMode ? "minimal (bare mode)" : "full"} max_tokens=${body.max_tokens}`
+  );
 
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
@@ -75,19 +115,7 @@ async function callOpenRouter(
       "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
       "X-Title": "Language Coach",
     },
-    body: JSON.stringify({
-      model: modelId,
-      ...(modelChain.length > 1 && { models: modelChain }),
-      messages: [
-        { role: "system", content: systemContent },
-        ...history,
-        { role: "user", content: userMessage },
-      ],
-      temperature: 0.7,
-      max_tokens: 1024,
-      // Exclude Gemini via OpenRouter — no json_object mode support
-      ...(!modelChain.some((m) => m.includes("gemini")) && { response_format: { type: "json_object" } }),
-    }),
+    body: JSON.stringify(body),
   });
 
   if (!res.ok) {
@@ -112,31 +140,42 @@ async function callGemini(
   aiName = DEFAULT_AI_NAME,
   language: LanguageMeta = LANGUAGES[DEFAULT_LANGUAGE],
   characterPrompt?: string,
-  systemPromptOverride?: string
+  systemPromptOverride?: string,
+  bareMode = false
 ): Promise<AIResponse> {
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is not set");
 
-  const systemContent = systemPromptOverride ?? buildSystemPrompt(aiName, language, characterPrompt);
+  // bareMode: minimal format-only system prompt (no persona / tutor framing /
+  // JSON contract) plus a lower token cap to keep replies short.
+  const systemContent = bareMode
+    ? BARE_MODE_SYSTEM
+    : (systemPromptOverride ?? buildSystemPrompt(aiName, language, characterPrompt));
 
   const geminiHistory = history.map((m) => ({
     role: m.role === "assistant" ? "model" : "user",
     parts: [{ text: m.content }],
   }));
 
+  const body = {
+    system_instruction: { parts: [{ text: systemContent }] },
+    contents: [
+      ...geminiHistory,
+      { role: "user", parts: [{ text: userMessage }] },
+    ],
+    generationConfig: { temperature: 0.7, maxOutputTokens: bareMode ? BARE_MODE_MAX_TOKENS : DEFAULT_MAX_TOKENS },
+  };
+
+  console.log(
+    `[AI] Gemini request: model=${modelId} systemInstruction=${bareMode ? "minimal (bare mode)" : "full"} maxOutputTokens=${body.generationConfig.maxOutputTokens}`
+  );
+
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`,
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: systemContent }] },
-        contents: [
-          ...geminiHistory,
-          { role: "user", parts: [{ text: userMessage }] },
-        ],
-        generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
-      }),
+      body: JSON.stringify(body),
     }
   );
 
@@ -364,6 +403,7 @@ export interface GenerateOptions {
   characterPrompt?: string;
   systemPromptOverride?: string;   // pass buildGrammarSystemPrompt() output directly in grammar_mode
   grammarMode?: boolean;           // when true, fixes model to Gemma 4 26B A4B
+  bareMode?: boolean;              // when true, send NO system prompt at all (raw LLM, persona-less)
 }
 
 // Dedicated model for grammar_mode (via OpenRouter)
@@ -379,6 +419,7 @@ export async function generateAIResponse(options: GenerateOptions): Promise<Gene
     characterPrompt,
     systemPromptOverride,
     grammarMode,
+    bareMode = false,
   } = options;
   const language = LANGUAGES[languageCode] ?? LANGUAGES[DEFAULT_LANGUAGE];
 
@@ -437,7 +478,7 @@ export async function generateAIResponse(options: GenerateOptions): Promise<Gene
           }
         }
 
-        const data = await callOpenRouter(modelId, effectiveHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride);
+        const data = await callOpenRouter(modelId, effectiveHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride, undefined, bareMode);
         console.log(`[Auto Mode] ✓ Resolved by ${label}: ${modelId.split("/").pop()}`);
         return {
           data,
@@ -466,8 +507,8 @@ export async function generateAIResponse(options: GenerateOptions): Promise<Gene
 
   const callModel = (modelId: string) =>
     config.endpoint === "gemini_api"
-      ? callGemini(modelId, conversationHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride)
-      : callOpenRouter(modelId, conversationHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride, OPENROUTER_FALLBACK_MODELS);
+      ? callGemini(modelId, conversationHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride, bareMode)
+      : callOpenRouter(modelId, conversationHistory, userMessage, aiName, language, characterPrompt, systemPromptOverride, OPENROUTER_FALLBACK_MODELS, bareMode);
 
   // Primary attempt
   try {

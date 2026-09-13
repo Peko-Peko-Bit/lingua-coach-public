@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewportHeightProvider } from "@/components/ViewportHeightProvider";
+import GuestSeedOnEntry from "@/components/GuestSeedOnEntry";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ViewportHeightProvider />
+        {/* Covers a guest who came from LinguaGym and so never saw our login
+            page. No-op for everyone else — see the component for why it lives
+            here rather than in a page. */}
+        <GuestSeedOnEntry />
         {children}
       </body>
     </html>

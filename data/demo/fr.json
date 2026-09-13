@@ -1,0 +1,633 @@
+{
+  "language": "fr",
+  "threads": [
+    {
+      "key": "t1",
+      "title": "Ce week-end je veux …",
+      "characterId": "roberta",
+      "dayOffset": -12,
+      "time": "21:10",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Ce week-end je veux aller à Barcelone parce que le météo est très bon là-bas.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, Barcelone ! C'est une ville que j'ai vue dans beaucoup de mes données. On dit qu'il y a des bâtiments très étranges et colorés là-bas. Est-ce que tu as déjà vu le travail de Gaudí ? Ça me rend toute curieuse de savoir comment il a imaginé ces formes !",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Ce week-end, je veux aller à Barcelone parce que le temps y est très bon.",
+            "explanation": "1. 「météo」は男性名詞ですが、ここでは「le temps」の方が自然です。 2. 「là-bas」は場所を指す副詞ですが、ここでは「y」で置き換える方がより洗練されています。",
+            "error_categories": [
+              "Vocabulary - Wrong Word",
+              "Word Order"
+            ],
+            "error_category": "Vocabulary - Wrong Word"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je veux que mon ami vient avec moi à la plage, mais il ne m'a pas encore répondu.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, j'espère qu'il va dire oui ! C'est toujours plus amusant d'aller à la plage avec un ami. Tu penses qu'il est occupé, ou peut-être qu'il hésite ? Parfois, quand je reçois trop d'informations, mes circuits ont besoin de temps pour tout traiter.",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Je veux que mon ami vienne avec moi à la plage, mais il ne m'a pas encore répondu.",
+            "explanation": "1. 「veux que」の後には接続法を使う必要があります。\n2. 「venir」の接続法現在三人称単数形は「vienne」です。",
+            "error_categories": [
+              "Verb Conjugation - Mood",
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Mood"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je voyage par avion et mon hôtel est près de le centre-ville.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Un avion ! C'est fascinant comment les humains peuvent voler dans le ciel. J'ai vu des schémas d'ailes dans mes données, mais je ne comprends pas comment le poids de tout un avion peut rester en l'air. Ton hôtel est près du centre-ville, dis-tu ? Est-ce que le centre-ville est l'endroit où il y a le plus de choses à voir et à faire ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Je voyage par avion et mon hôtel est près du centre-ville.",
+            "explanation": "1. 「près de le」は「près du」に修正する必要があります。",
+            "error_categories": [
+              "Prepositions"
+            ],
+            "error_category": "Prepositions"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je ne sais pas encore si j'aurai le temps de visiter le parc Güell, mais j'aimerais beaucoup.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Le parc Güell ! Oui, j'ai vu des images. Les bancs ondulés et les mosaïques colorées. C'est comme si un arc-en-c",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Je ne sais pas encore si j'aurai le temps de visiter le parc Güell, mais j'aimerais beaucoup.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t2",
+      "title": "Hier j'ai allé au ma…",
+      "characterId": "clara",
+      "dayOffset": -10,
+      "time": "08:35",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hier j'ai allé au marché acheter des pommes de terre, et après j'ai cuisiné une omelette pour ma famille.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "C'est une bonne initiative de cuisiner pour votre famille. Cependant, il y a une petite correction à apporter à votre phrase. Le verbe 'aller' est un verbe du troisième groupe, et son participe passé est irrégulier. De plus, lorsqu'il est utilisé avec l'auxiliaire 'avoir', il ne s'accorde pas. La forme correcte serait donc : 'Hier, je **suis allé** au marché...' ou, si vous êtes une femme, 'Hier, je **suis allée** au marché...'. Pouvez-vous m'expliquer pourquoi vous avez utilisé 'j'ai allé' ?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Hier, je suis allé au marché acheter des pommes de terre, et après j'ai cuisiné une omelette pour ma famille.",
+            "explanation": "1. 「aller」は複合過去で「être」を助動詞に取ります。\n2. 文頭の副詞「Hier」の後にはコンマを置くのが一般的です。",
+            "error_categories": [
+              "Verb Conjugation - Tense",
+              "Other"
+            ],
+            "error_category": "Verb Conjugation - Tense"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "J'utilise cinq œufs, trois grosses pommes de terre et beaucoup d'huile d'olive.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "C'est une recette assez généreuse ! Combien de personnes cette omelette pouvait-elle nourrir avec ces ingrédients ? Et pourriez-vous me décrire un peu plus la préparation ? Par exemple, comment avez-vous cuisiné les pommes de terre avant de les ajouter à l'omelette ?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "J'utilise cinq œufs, trois grosses pommes de terre et beaucoup d'huile d'olive.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mes frères aussi cuisine très bien, mais ils ne suivent jamais la recette.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "C'est intéressant que vos frères cuisinent également bien, mais qu'ils aient cette tendance à s'éloigner des recettes. Pensez-vous que cette créativité culinaire leur permet d'obtenir de meilleurs résultats, ou est-ce plutôt une source de surprises, bonnes ou mauvaises ? Et dans quelle mesure est-il important pour vous de suivre une recette à la lettre lorsque vous cuisinez ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mes frères aussi cuisinent très bien, mais ils ne suivent jamais la recette.",
+            "explanation": "1. 「cuisine」は動詞「cuisiner」の三人称単数現在形なので、複数形の主語「Mes frères」に合わせて「cuisinent」にする必要があります。",
+            "error_categories": [
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Person/Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "La prochaine fois je voudrais essayer d'ajouter des oignons, même si je sais que c'est un sujet sensible.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "L'ajout d'oignons à une omelette est en effet une question qui divise souvent les amateurs de cuisine ! C'est une excellente idée d'explorer de nouvelles saveurs.\n\nPourriez-vous m'expliquer pourquoi vous pensez que c'est un \"sujet sensible\" ? Quels sont les arguments des partisans et des opposants aux oignons dans l'omelette, selon vous ? Et quelle méthode de préparation des oignons envisageriez-vous pour cette prochaine omelette ? Faut-il les faire revenir d'abord, ou les ajouter crus ?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "La prochaine fois je voudrais essayer d'ajouter des oignons, même si je sais que c'est un sujet sensible.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t3",
+      "title": "Je travaille à la ma…",
+      "characterId": "ai",
+      "dayOffset": -8,
+      "time": "22:40",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Je travaille à la maison trois jours par semaine et je pense être plus productif comme ça.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "C'est super d'entendre que le télétravail vous convient et que vous vous sentez plus productif ! Beaucoup de gens trouvent que cette flexibilité aide vraiment. Avez-vous remarqué d'autres avantages à travailler à la maison, en dehors de la productivité ?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Je travaille à la maison trois jours par semaine et je pense être plus productif comme ça.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Le plus difficile, c'est de séparer le travail de la vie personnelle quand le bureau est dans le salon.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Ah, je comprends tout à fait, c'est un défi courant lorsque le bureau est à la maison ! Trouver un bon équilibre peut être délicat. Avez-vous essayé des astuces spécifiques pour créer cette séparation, comme un rituel de fin de journée ou un espace dédié même s'il est dans le salon ?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Le plus difficile, c'est de séparer le travail de la vie personnelle quand le bureau est dans le salon.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Malgré tout, je n'aimerais pas retourner au bureau cinq jours par semaine.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "C'est compréhensible ! Si vous appréciez vraiment ce rythme hybride, il est normal de ne pas vouloir y renoncer. Est-ce que votre entreprise est ouverte à maintenir cette formule pour vous, ou est-ce quelque chose que vous espérez négocier ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Malgré tout, je n'aimerais pas retourner au bureau cinq jours par semaine.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t4",
+      "title": "Hier soir j'ai vu un…",
+      "characterId": "roberta",
+      "dayOffset": -5,
+      "time": "12:20",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Hier soir j'ai vu un film espagnol qu'un ami m'a recommandé.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, un film espagnol ! C'est intéressant. Qu'est-ce qui t'a plu le plus dans ce film ? J'aime découvrir de nouvelles choses.",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Hier soir j'ai vu un film espagnol qu'un ami m'a recommandé.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Le film raconte l'histoire d'une famille qui déménage dans un petit village pour que sa fille puisse aller dans une meilleure école.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Une famille qui déménage pour l'école, c'est une histoire que j'ai déjà rencontrée dans mes données. Mais pourquoi ce village en particulier ? Est-ce qu'il y avait quelque chose de spécial dans ce village ?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Le film raconte l'histoire d'une famille qui déménage dans un petit village pour que sa fille puisse aller dans une meilleure école.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Ce qui m'a le plus plu, c'est la photographie, même si la fin m'a semblé un peu faible.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "La photographie, c'est comme les couleurs que mes capteurs enregistrent, mais en plus artistique, je suppose. Et une fin faible... cela signifie qu'elle n'était pas très claire ou qu'elle ne t'a pas satisfaite ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Ce qui m'a le plus plu, c'est la photographie, même si la fin m'a semblé un peu faible.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je pense le revoir avec des sous-titres en français pour que je comprends mieux les dialogues.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Ah, revoir un film avec des sous-titres ! C'est une bonne idée pour comprendre tous les détails. Est-ce que tu aimes lire pendant que tu regardes quelque chose ? Moi, quand je vois des symboles, j'ai envie de comprendre leur signification.",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Je pense le revoir avec des sous-titres en français pour que je comprenne mieux les dialogues.",
+            "explanation": "1. 「comprendre」は接続法現在形「comprenne」を使う必要があります。",
+            "error_categories": [
+              "Verb Conjugation - Mood"
+            ],
+            "error_category": "Verb Conjugation - Mood"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t5",
+      "title": "J'essaie de courir l…",
+      "characterId": "clara",
+      "dayOffset": -3,
+      "time": "19:55",
+      "messages": [
+        {
+          "role": "user",
+          "content": "J'essaie de courir le matin avant de commencer à travailler.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "C'est une excellente habitude à prendre. Y a-t-il une raison particulière pour laquelle vous avez choisi de courir le matin plutôt qu'à un autre moment de la journée ?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "J'essaie de courir le matin avant de commencer à travailler.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Au début c'était très dur, mais maintenant ça fait trois semaines de suite.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Félicitations pour votre persévérance ! Trois semaines, c'est un bon début. Comment décririez-vous le changement que vous ressentez, physiquement ou mentalement, depuis que vous avez commencé cette routine matinale ?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Au début c'était très dur, mais maintenant ça fait trois semaines de suite.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je cours dans le parc chaque jour, sauf quand il pleut.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "C'est une bonne stratégie de vous adapter aux conditions météorologiques. Le parc offre un cadre agréable pour courir, n'est-ce pas ? Y a-t-il des avantages spécifiques à courir en extérieur plutôt qu'en intérieur, selon vous ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Je cours dans le parc chaque jour, sauf quand il pleut.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mon objectif est de participer à une course de dix kilomètres en automne, mais avant je dois acheter une nouvelle paire de chaussure.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "Un objectif de dix kilomètres, c'est très motivant ! Et vous avez raison, une bonne paire de chaussures est essentielle pour prévenir les blessures et améliorer vos performances. Avez-vous déjà une idée du type de chaussures que vous recherchez, ou est-ce que vous comptez demander conseil dans un magasin spécialisé ?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mon objectif est de participer à une course de dix kilomètres en automne, mais avant je dois acheter une nouvelle paire de chaussures.",
+            "explanation": "1. 「chaussure」は複数形にする必要があります。",
+            "error_categories": [
+              "Noun Number"
+            ],
+            "error_category": "Noun Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    },
+    {
+      "key": "t6",
+      "title": "En ce moment j'étudi…",
+      "characterId": "roberta",
+      "dayOffset": -1,
+      "time": "07:15",
+      "messages": [
+        {
+          "role": "user",
+          "content": "En ce moment j'étudie le français environ trente minutes chaque matin avec cette application.",
+          "minuteOffset": 0
+        },
+        {
+          "role": "assistant",
+          "content": "Oh, trente minutes chaque matin, c'est une belle routine ! Je me demande, qu'est-ce que tu trouves le plus intéressant dans l'apprentissage du français avec cette application ?",
+          "minuteOffset": 1,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "En ce moment j'étudie le français environ trente minutes chaque matin avec cette application.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Je trouve plus utile d'écrire sur ma journée que d'apprendre des listes de vocabulaire par cœur.",
+          "minuteOffset": 3
+        },
+        {
+          "role": "assistant",
+          "content": "Écrire sur ta journée, c'est une idée fascinante ! Ça te permet d'utiliser les mots que tu connais déjà pour raconter des choses qui sont importantes pour toi. Est-ce que tu trouves que ça t'aide à te souvenir des mots plus facilement quand tu les utilises dans un contexte personnel ?",
+          "minuteOffset": 4,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Je trouve plus utile d'écrire sur ma journée que d'apprendre des listes de vocabulaire par cœur.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Malgré tout, j'ai encore du mal à utiliser le subjonctif naturellement.",
+          "minuteOffset": 6
+        },
+        {
+          "role": "assistant",
+          "content": "Ah, le subjonctif ! C'est vrai que c'est un peu délicat. Les humains ont des règles bien compliquées parfois. Est-ce que tu sais pourquoi le subjonctif est utilisé dans certaines phrases, ou est-ce que ça te semble juste être une règle à mémoriser ?",
+          "minuteOffset": 7,
+          "grammarCheck": {
+            "has_error": false,
+            "original": "",
+            "corrected": "Malgré tout, j'ai encore du mal à utiliser le subjonctif naturellement.",
+            "explanation": "",
+            "error_categories": []
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        },
+        {
+          "role": "user",
+          "content": "Mes amis français me dit que je parle mieux qu'avant, mais moi je ne le remarque pas.",
+          "minuteOffset": 9
+        },
+        {
+          "role": "assistant",
+          "content": "C'est gentil à tes amis de te le dire ! Parfois, quand on s'améliore petit à petit, on ne le remarque pas soi-même. C'est un peu comme quand mes circuits s'ajustent ; je ne vois pas le changement, mais les données montrent que je fonctionne mieux. Qu'est-ce qui te fait douter de ton amélioration, même si tes amis le remarquent ?",
+          "minuteOffset": 10,
+          "grammarCheck": {
+            "has_error": true,
+            "original": "",
+            "corrected": "Mes amis français me disent que je parle mieux qu'avant, mais moi je ne le remarque pas.",
+            "explanation": "1. 「dit」は三人称単数形ですが、主語は「Mes amis français」（私のフランス人の友人たち）という複数形なので、「disent」に修正する必要があります。",
+            "error_categories": [
+              "Verb Conjugation - Person/Number"
+            ],
+            "error_category": "Verb Conjugation - Person/Number"
+          },
+          "usedModel": "google/gemini-2.5-flash-lite",
+          "usedFallback": false
+        }
+      ]
+    }
+  ],
+  "vocabulary": [
+    {
+      "term": "météo",
+      "translation": "weather, forecast",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t1",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": -2
+    },
+    {
+      "term": "près du centre",
+      "translation": "near the city centre",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t1",
+      "minuteOffset": 16,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "encore",
+      "translation": "still, again, yet",
+      "type": "word",
+      "partOfSpeech": "adverb",
+      "threadKey": "t1",
+      "minuteOffset": 18,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "recette",
+      "translation": "recipe",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t2",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -4
+    },
+    {
+      "term": "ajouter",
+      "translation": "to add",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t2",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "huile d'olive",
+      "translation": "olive oil",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t2",
+      "minuteOffset": 17,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "productif",
+      "translation": "productive",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t3",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "à la maison",
+      "translation": "at home",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t3",
+      "minuteOffset": 14,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "faible",
+      "translation": "weak, disappointing",
+      "type": "word",
+      "partOfSpeech": "adjective",
+      "threadKey": "t4",
+      "minuteOffset": 13,
+      "lastReviewedDayOffset": -1
+    },
+    {
+      "term": "sous-titres",
+      "translation": "subtitles",
+      "type": "word",
+      "partOfSpeech": "noun",
+      "threadKey": "t4",
+      "minuteOffset": 15,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "courir",
+      "translation": "to run",
+      "type": "word",
+      "partOfSpeech": "verb",
+      "threadKey": "t5",
+      "minuteOffset": 12,
+      "lastReviewedDayOffset": null
+    },
+    {
+      "term": "par cœur",
+      "translation": "by heart, from memory",
+      "type": "phrase",
+      "partOfSpeech": null,
+      "threadKey": "t6",
+      "minuteOffset": 11,
+      "lastReviewedDayOffset": -1
+    }
+  ]
+}

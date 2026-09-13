@@ -34,7 +34,7 @@ interface SummaryData {
 type Period = "7" | "30" | "all";
 
 const SERIES = {
-  transmaster_counts: { label: "TransMaster", color: "#1E3A5F" },
+  transmaster_counts: { label: "LinguaGym",   color: "#1E3A5F" },
   chat_counts:        { label: "Chat",        color: "#93C5FD" },
   error_rate:         { label: "Error Rate",  color: "#F97316" },
 } as const;
@@ -160,7 +160,7 @@ export function ProgressChart({ language }: { language: string }) {
                   formatter={(value, name) => {
                     const v = value as number;
                     if (name === "error_rate") return [`${Math.round(v * 100)}%`, "Error Rate"];
-                    if (name === "transmaster_counts") return [v, "TransMaster"];
+                    if (name === "transmaster_counts") return [v, "LinguaGym"];
                     if (name === "chat_counts") return [v, "Chat"];
                     return [v, String(name)];
                   }}
